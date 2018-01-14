@@ -5,7 +5,7 @@ wanted to expose information about the artist and album for music files without
 using some kind of restrictive naming convention. What I came up with works 
 like this:
 
-- All music files live in `~/Music/flat`
+- All music files live in `~/Music/master`
 - Each artist and album has a directory in `~/Music/albums` or `~/Music/artists`
   - Within a given artist's or album's directory is a symbolic link to each 
 music file belonging to that artist.

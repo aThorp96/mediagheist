@@ -17,11 +17,11 @@ if [[ "$#" < 1 ]]; then
 	exit 1
 fi
 MUSICDIR="$HOME/Music"
-FLATDIR="$MUSICDIR/flat"
+MASTERDIR="$MUSICDIR/master"
 ALBUMDIR="$MUSICDIR/albums"
 ARTISTDIR="$MUSICDIR/artists"
-if ! mkdir -p "$FLATDIR"; then
-	echo "Unable to create $FLATDIR"
+if ! mkdir -p "$MASTERDIR"; then
+	echo "Unable to create $MASTERDIR"
 	exit 1
 elif ! mkdir -p "$ALBUMDIR"; then
 	echo "Unable to create $ALBUMDIR"
@@ -32,7 +32,7 @@ elif ! mkdir -p "$ARTISTDIR"; then
 fi
 for file in "$1"/*; do
 	detox_file=$(basename "$file" | inline-detox)
-	final_path="$FLATDIR/$detox_file"
+	final_path="$MASTERDIR/$detox_file"
 	metadata=$(ffprobe "$file" -print_format json -show_format -show_streams 2> /dev/null)
 	format=$(echo "$metadata" | jq '.format.format_name' | tr -d '"')
 	if [[ "$format" == "mp3" ]]; then
